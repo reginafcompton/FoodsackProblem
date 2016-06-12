@@ -1,4 +1,4 @@
-require_relative '../lib/DataRetriever.rb'
+require_relative '../lib/data_retriever.rb'
 
 describe DataRetriever do
   let(:menu_retriever) { DataRetriever }
