@@ -1,9 +1,9 @@
 require 'nokogiri'
 require 'open-uri'
 require 'csv'
-require_relative 'variables.rb'
+require_relative '../config/variables.rb'
 
-class DataWriter
+class DataRetriever
 
   def self.write_file
     doc = Nokogiri::HTML(open(URL))
@@ -23,6 +23,16 @@ class DataWriter
     end
 
     menu_items_hash
+  end
+
+  def self.make_data_array
+    menu_items_array = Array.new
+
+    CSV.foreach(CSV_FILE_PATH, :headers => true) do |csv_line|
+      menu_items_array << csv_line[1][1..-1]
+    end
+
+    menu_items_array
   end
 
 end
