@@ -6,7 +6,7 @@ class DataRetriever
   end
 
   def self.find_max_amount
-    max_amount = CSV.open(CSV_FILE_PATH, 'r') { |csv_line| (csv_line.first[0][1..-1].to_f) * 100 }
+    max_amount = CSV.open(CSV_FILE_PATH, 'r') { |csv_line| ((csv_line.first[0][1..-1].to_f) * 100).to_i }
   end
 
   def self.make_data_hash
@@ -24,7 +24,7 @@ class DataRetriever
     menu_items_array = Array.new
 
     CSV.foreach(CSV_FILE_PATH, :headers => true) do |csv_line|
-      menu_items_array << (csv_line[1][1..-1].to_f) * 100
+      menu_items_array << ((csv_line[1][1..-1].to_f) * 100).to_i
     end
 
     menu_items_array.sort
