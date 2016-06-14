@@ -28,14 +28,7 @@ class DataParser
     # Store all solutions in this.
     all_solutions = Array.new(total + 1) { [0, []] }
 
-     # Make an array of consecutive integers, from lowest price to target total.
-    lowest_price = prices_array[0]
-    price_range = []
-
-    (total + 1 - lowest_price).times do
-      price_range << lowest_price
-      lowest_price += 1
-    end
+    price_range = make_possiblity_array
 
     # Check every possibility, beginning with the lowest price, up to the target total.
     price_range.each do |incremented_price|
@@ -68,7 +61,3 @@ class DataParser
   end
 
 end
-
-
-par = DataParser.new(total: 1505, prices_array: [215,275, 335, 355, 420, 580] )
-par.make_my_order

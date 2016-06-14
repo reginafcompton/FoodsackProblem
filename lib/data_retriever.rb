@@ -1,8 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'csv'
-require_relative '../config/variables.rb'
-
 class DataRetriever
 
   def self.write_file
