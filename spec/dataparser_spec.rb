@@ -9,6 +9,10 @@ describe DataParser do
       expect(price_range).to be_a Array
     end
 
+    it 'returns an array that includes the lowest menu price at index 0' do
+      expect(price_range[0]).to eq(menu_parser.prices_array[0])
+    end
+
     it 'returns an array as long as the target total less the lowest price plus one' do
       expect(price_range.length).to eq((menu_parser.total - price_range[0] + 1))
     end

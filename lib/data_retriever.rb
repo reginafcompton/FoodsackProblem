@@ -32,7 +32,7 @@ class DataRetriever
       menu_items_array << (csv_line[1][1..-1].to_f) * 100
     end
 
-    menu_items_array
+    menu_items_array.sort
   end
 
 end
