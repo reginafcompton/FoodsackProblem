@@ -6,6 +6,19 @@ class DataParser
     @prices_array = args[:prices_array]
   end
 
+  def make_possiblity_array
+    # Make an array of consecutive integers, from lowest price to target total.
+    lowest_price = prices_array[0]
+    price_range = []
+
+    (total + 1 - lowest_price).times do
+      price_range << lowest_price
+      lowest_price += 1
+    end
+
+    price_range
+  end
+
   def make_my_order
     # Store all price possibilities in this.
     price_possibilities = Array.new(total + 1) { [] }
