@@ -19,29 +19,34 @@ class DataParser
     price_range
   end
 
+  def make_temp_price_array(incremented_price, price_from_menu, possibilities_array)
+        num_of_items = incremented_price / price_from_menu
+        container_index = incremented_price % price_from_menu
+        temp_price_array = []
+
+        num_of_items.times { temp_price_array << price_from_menu }
+
+        temp_price_array << possibilities_array[container_index]
+        temp_price_array.flatten!
+  end
+
   def make_my_order
     # Store all price possibilities in this.
     price_possibilities = Array.new(total + 1) { [] }
     # Store all totals in this.
     totals = Array.new(total + 1) { 0 }
-
     # Store all solutions in this.
     all_solutions = Array.new(total + 1) { [0, []] }
 
     price_range = make_possiblity_array
 
-    # Check every possibility, beginning with the lowest price, up to the target total.
+    # Check every possibility incremente by one, beginning with the lowest price, up to the target total.
     price_range.each do |incremented_price|
 
       prices_array.each do |price|
 
-        num_of_items = incremented_price / price
-        container_index = incremented_price % price
-        temp_price_array = []
-
-        num_of_items.times { temp_price_array << price }
-        temp_price_array << price_possibilities[container_index]
-        temp_price_array.flatten!
+        # Create an array of possible prices.
+        temp_price_array = make_temp_price_array(incremented_price, price, price_possibilities)
 
         # Add elements in the temp_price_array.
         temp_total = temp_price_array.reduce(0, :+)

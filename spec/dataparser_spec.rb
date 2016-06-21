@@ -18,4 +18,14 @@ describe DataParser do
     end
   end
 
+  describe '#make_my_order' do
+    it 'returns a nested array' do
+      expect(menu_parser.make_my_order[1]).to be_a Array
+    end
+
+    it 'returns an array in which the 0 index is the target total' do
+      expect(menu_parser.make_my_order[0]).to eq(menu_parser.total)
+    end
+  end
+
 end
