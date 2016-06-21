@@ -16,8 +16,11 @@ class DataRetriever
     menu_items_hash = Hash.new
 
     CSV.foreach(CSV_FILE_PATH, :headers => true) do |csv_line|
-      # Add items to hash. Remove $.
-      menu_items_hash[csv_line[0]] = csv_line[1][1..-1]
+      # Remove $. Make integer.
+      price = make_integer(csv_line[1][1..-1])
+
+      # Add items to hash.
+      menu_items_hash[csv_line[0]] = price
     end
 
     menu_items_hash

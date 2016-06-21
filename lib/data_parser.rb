@@ -1,9 +1,10 @@
 class DataParser
-  attr_reader :total, :prices_array
+  attr_reader :total, :prices_array, :prices_hash
 
   def initialize(args)
     @total = args[:total]
     @prices_array = args[:prices_array]
+    @prices_hash = args[:prices_hash]
   end
 
   def make_possiblity_array
@@ -63,6 +64,21 @@ class DataParser
 
     end
     all_solutions[total]
+  end
+
+  def print_my_order
+    array_of_prices = make_my_order
+
+    puts 'Your order follows, signora. Buon appetito!'
+    prices_hash.each do |item, cost|
+      array_of_prices[1].each do |price|
+        if prices_hash[item] == price
+          dollar_amount = price / 100.to_f
+          puts "#{item} . . . $#{dollar_amount}"
+        end
+      end
+
+    end
   end
 
 end

@@ -1,7 +1,7 @@
 require_relative '../lib/data_parser.rb'
 
 describe DataParser do
-  let(:menu_parser) { DataParser.new(total: 1505, prices_array: [215,275, 335, 355, 420, 580] ) }
+  let(:menu_parser) { DataParser.new(total: 1505, prices_array: [215,275, 335, 355, 420, 580], prices_hash: {"mixed fruit"=>"2.15", "french fries"=>"2.75", "side salad"=>"3.35", "hot wings"=>"3.55", "mozzarella sticks"=>"4.20", "sampler plate"=>"5.80"} ) }
   let(:price_range) { menu_parser.make_possiblity_array }
 
   describe "#make_possiblity_array" do
